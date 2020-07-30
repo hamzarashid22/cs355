@@ -1,91 +1,103 @@
 <!DOCTYPE html>
 <meta charset=" UTF-8">
-<html lang = "en">
-	<header>
-		<title>CS355 Midterm</title>
-	</header>
-	<body>
-		<h1>Puzzle Original</h1>
-		<div id = "grid-container" >
-			<div><img src="1.jpg" alt="s"  ></div>
-			<div><img src="2.jpg" alt="s"></div>
-			<div><img src="3.jpg" alt="s"></div>
-			<div><img src="4.jpg" alt="s" ></div>
-			<div><img src="5.jpg" alt="s" ></div>
-			<div><img src="6.jpg" alt="s"></div>
-			<div><img src="7.jpg" alt="s" ></div>
-			<div><img src="8.jpg" alt="s" ></div>
-			<div><img src="9.jpg" alt="s" ></div>
+<html lang="en">
+<head>
+	<title>CS355 Midterm</title>
+	<style>
+		img {
+			width: -webkit-fill-available;
+		}
+		#grid-container {
+			display: grid;
+			grid-template-columns: auto auto auto;
+		}
+		#grid-container>div {
+			text-align: stretch;
+			background: lightgreen;
+			border: 3px solid green;
+		}
+		#grid-container2 {
+			display: grid;
+			grid-template-columns: auto auto auto;
+		}
+		#grid-container2>div {
+			text-align: stretch;
+			background: lightgreen;
+			border: 3px solid green;
+		}
+		h1 {
+			text-align: center;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<h1>Puzzle Original</h1>
+	<div id="grid-container">
+		<div><img id="org_1" src="1.jpg" alt="s"></div>
+		<div><img id="org_2" src="2.jpg" alt="s"></div>
+		<div><img id="org_3" src="3.jpg" alt="s"></div>
+		<div><img id="org_4" src="4.jpg" alt="s"></div>
+		<div><img id="org_5" src="5.jpg" alt="s"></div>
+		<div><img id="org_6" src="6.jpg" alt="s"></div>
+		<div><img id="org_7" src="7.jpg" alt="s"></div>
+		<div><img id="org_8" src="8.jpg" alt="s"></div>
+		<div><img id="org_9" src="9.jpg" alt="s"></div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div>
+		<h1> Puzzle randomized</h1>
+		<div id="grid-container2">
+			<div><input onchange="selectImage(this)" id="pzl_4" class="puzzle-box" type="checkbox"><img id="pzl_4_img" src="4.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_5" class="puzzle-box" type="checkbox"><img id="pzl_5_img" src="5.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_6" class="puzzle-box" type="checkbox"><img id="pzl_6_img" src="6.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_7" class="puzzle-box" type="checkbox"><img id="pzl_7_img" src="7.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_8" class="puzzle-box" type="checkbox"><img id="pzl_8_img" src="8.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_9" class="puzzle-box" type="checkbox"><img id="pzl_9_img" src="9.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_1" class="puzzle-box" type="checkbox"><img id="pzl_1_img" src="1.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_2" class="puzzle-box" type="checkbox"><img id="pzl_2_img" src="2.jpg" alt="s"></div>
+			<div><input onchange="selectImage(this)" id="pzl_3" class="puzzle-box" type="checkbox"><img id="pzl_3_img" src="3.jpg" alt="s"></div>
 
 		</div>
-		<br>
-		<br>
-		<br>
-		<div>
-			<h1> Puzzle randomized</h1>
-			<div id = "grid-container2">
-			<div><input type="checkbox"><img src="4.jpg" alt="s" ></div>
-			<div><input type="checkbox"><img src="5.jpg" alt="s" ></div>
-			<div><input type="checkbox"><img src="6.jpg" alt="s"></div>
-			<div><input type ="checkbox"><img src="7.jpg" alt="s" ></div>
-			<div><input type = "checkbox"><img src="8.jpg" alt="s" ></div>
-			<div><input type = "checkbox"><img src="9.jpg" alt="s" ></div>
-			<div><input type = "checkbox"><img src="1.jpg" alt="s"  ></div>
-			<div><input type = "checkbox"><img src="2.jpg" alt="s"></div>
-			<div><input type = "checkbox"><img src="3.jpg" alt="s"></div>
-			
+		<section>
+			<button type="button" onclick="changeImage()">Swap</button>
+			<h2>Moves Counter: <span id="moves">0</span></h2>
+		</section>
 
-			</div>
-			<section>
-				<button type = "button">Swap</button>
-				<h2>Moves Counter:</h2>
-			</section>
-
-
-
-	</body>
+</body>
 </html>
-<style>
-	#grid-container {
-		
-   display: grid;
-   grid-template-columns: auto auto auto;
-}
-
-#grid-container > div {
-   text-align: stretch;
-   background: lightgreen;
-   border: 3px solid green;
-}
-#grid-container2 {
-		
-   display: grid;
-   grid-template-columns: auto auto auto;
-}
-
-#grid-container2 > div {
-   text-align: stretch;
-   background: lightgreen;
-   border: 3px solid green;
-}
-
-h1{
-	text-align:center;
-	color:blue;
-}
-
-
-</style>
 <script>
+	var imgArr = [];
+	var moveCounter = 0;
+	function selectImage(checkbox) {
+		var imgID = checkbox.id + "_img";
+		if(checkbox.checked){
+			if(imgArr.length < 2){
+				imgArr.push(imgID);
+			} else {
+				checkbox.checked = false;
+				alert('Only select 2');
+				return false;
+			}
+		} else {
+			if (imgArr.indexOf(imgID) > -1) {
+    			imgArr.splice(imgArr.indexOf(imgID) , 1);
+			}
+		}		
+	}
 	function changeImage() {
-
-if (document.getElementById("imgClickAndChange").src == "http://www.userinterfaceicons.com/80x80/minimize.png") 
-{
-	document.getElementById("imgClickAndChange").src = "http://www.userinterfaceicons.com/80x80/maximize.png";
-}
-else 
-{
-	document.getElementById("imgClickAndChange").src = "http://www.userinterfaceicons.com/80x80/minimize.png";
-}
-}
-
+		if(imgArr.length == 2){
+			var image1 = document.getElementById(imgArr[0]);
+			var image2 = document.getElementById(imgArr[1]);
+			var temp = image1.src;
+			image1.src = image2.src;
+			image2.src = temp;
+			moveCounter++;
+			document.getElementById('moves').textContent = moveCounter;
+		} else {
+			alert('Please select 2');
+		}
+	}
+</script>
