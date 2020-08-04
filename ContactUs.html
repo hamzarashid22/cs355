@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<meta charset=" UTF-8">
+<html lang="en">
+<header>
+    <title>AboutUs</title>
+    </header>
+    <body>
+        <div id = "hello"> <button class = "zozo" onclick = "window.location.href = 'ActualGame.html'">The Snake Game</button>
+            <button onclick = "window.location.href = 'Aboutus.html'">Meet the Developers</button>
+            <button class = "zozo" onclick = "window.location.href = 'ContactUs.html'">Contact Us</button>
+            <button class = "zozo" onclick = "window.location.href = 'RulesOfSnake.html'">Rules</button>
+            <button class = "zozo" onclick = "window.location.href = 'BriefHistory.html'">History</button>
+            <button class = "zozo" onclick = "window.location.href = 'GoogleSearch.html'">GoogleSearch</button>
+            <button class = "zozo" onclick = "window.location.href = 'RelatedLinks.html'">Other Links</button>
+            
+            </div>
+            <div><button class = "zozo" id = "lol" onclick = "window.location.href='index.html'">Return Home</button></div>
+            <h1>Contact Form</h1>
+            <br>
+            <br>
+            <br>
+            <div class="container">
+                <div style="text-align:center">
+                </div>
+                <div class="row">
+                  <div class="column">
+                  </div>
+                  <div class="column">
+                    <form action="/action_page.php">
+                      <label for="fname">First Name</label>
+                      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                      <label for="lname">Last Name</label>
+                      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                      <label for="email">Email Address</label>
+                      <input type ="text" id="email" name = "email" placeholder="Your email address..">
+                        
+                      
+                      <label for="subject">Subject</label>
+                      <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+                      <input type="submit" value="Submit">
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+            <style>
+                h1{
+                    text-align:center;
+                    background-color: gold;
+                }
+                button{
+			font-style: italic;
+			font-size: 20px;
+			float:center;
+            background-color: gold;
+            
+	
+			
+		}
+        button:hover{
+            background-color: skyblue;
+        }
+        body{
+            background-color: coral;
+        }
+        * {
+  box-sizing: border-box;
+}
+
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: center;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+            </style>
